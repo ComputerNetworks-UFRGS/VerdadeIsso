@@ -1,8 +1,5 @@
 {% extends "App/templates/base.html" %}
-{% load static %}
-
-<html>
-
+{% load i18n %}
 {% block page_content %}
 
 <h3>É Verdade Isso? - Ferramenta para Análise de Campanhas de Desinformações e Notícias Falsas.</h3>
@@ -27,14 +24,4 @@ TBD                                                                <strong>Forma
                         </div>
                         <!-- end row -->  							
 {% endblock %}
-
-    <!-- Plugins js -->
-        <script src={% static "assets/libs/dropzone/min/dropzone.min.js" %}></script>
-        <script src={% static "assets/libs/dropify/js/dropify.min.js" %}></script>
-
-        <!-- Init js-->
-        <script src={% static "assets/js/pages/form-fileuploads.init.js" %}></script>
-        
-        
-    </body>
-</html>
+   

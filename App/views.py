@@ -54,3 +54,7 @@ def upload_file(request):
         form = UploadFileForm()
         form2 = UploadTextForm()
     return render(request, 'upload.html', {'form': form, 'form2': form2})
+    
+def data_dump(request):
+    return render(request, 'data_dump.html')
+

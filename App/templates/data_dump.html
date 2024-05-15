@@ -1,0 +1,97 @@
+{% extends "App/templates/base.html" %}
+{% load static %}
+
+<!-- third party css -->
+        <link href="{% static 'assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+       
+        <!-- third party css end -->
+
+{% block page_content %}
+ <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+						<div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="header-title">Buttons example</h4>
+                                        <p class="text-muted font-13 mb-4">
+                                            The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page
+                                            that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                                        </p>
+
+                                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Position</th>
+                                                    <th>Office</th>
+                                                    <th>Age</th>
+                                                    <th>Start date</th>
+                                                    <th>Salary</th>
+                                                </tr>
+                                            </thead>
+                                        
+                                        
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tiger Nixon</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>61</td>
+                                                    <td>2011/04/25</td>
+                                                    <td>$320,800</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Garrett Winters</td>
+                                                    <td>Accountant</td>
+                                                    <td>Tokyo</td>
+                                                    <td>63</td>
+                                                    <td>2011/07/25</td>
+                                                    <td>$170,750</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ashton Cox</td>
+                                                    <td>Junior Technical Author</td>
+                                                    <td>San Francisco</td>
+                                                    <td>66</td>
+                                                    <td>2009/01/12</td>
+                                                    <td>$86,000</td>
+                                                </tr>
+                                                <tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        </div> <!-- container -->
+{% endblock %}
+
+                </div> <!-- content -->
+                 <!-- third party js -->
+        <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-select/js/dataTables.select.min.js' %}"></script>
+        <script src="{% static 'assets/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+        <script src="{% static 'assets/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+        <!-- third party js ends -->
+
+        <!-- Datatables init -->
+        <script src="{% static 'assets/js/pages/datatables.init.js' %}"></script>
+

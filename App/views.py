@@ -31,7 +31,7 @@ def check_file(request):
     else:
         form = CheckFileForm()
         #form2 = UploadTextForm()
-    return render(request, 'upload.html', {'form': form})
+    return render(request, 'check.html', {'form': form})
 
 
 def upload_file(request):

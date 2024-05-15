@@ -4,7 +4,10 @@ import hashlib
 class Sources(models.Model):
     title = models.CharField(max_length=100, blank=True)
     link = models.CharField(max_length=64, blank=True)
-    
+    site_fonte = models.CharField(max_length=64, blank=True)
+    def __str__(self):
+       return self.title
+           
 class UploadedFile(models.Model):
     arquivo = models.FileField(upload_to='uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -19,6 +22,8 @@ class UploadedFile(models.Model):
                 hash_object.update(chunk)
             self.hash_value = hash_object.hexdigest()
         super().save(*args, **kwargs)
+    def __str__(self):
+       return self.hash_value
 
 class CheckedFile(models.Model):
     arquivo = models.FileField(upload_to='uploads/')
@@ -36,7 +41,10 @@ class CheckedFile(models.Model):
         if fake is not None:
             self.fake = fake
         super().save(*args, **kwargs)
-
+        
+    def __str__(self):
+       return self.hash_value
+       
 class UploadedText(models.Model):
     texto = models.TextField(max_length=1000)
     uploaded_at = models.DateTimeField(auto_now_add=True)

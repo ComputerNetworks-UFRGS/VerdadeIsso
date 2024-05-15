@@ -5,6 +5,11 @@
     <title>FAKE</title>
 </head>
 <body>
-  É fakenews!
+  O conteúdo analisado é FALSO. Segue abaixo fontes com informações sobre o porquê o conteúdo é falso e desinformativo.<br>
+  <ul>
+  {% for item in content %} 
+  <li><a href="{{ item.link }}">{{ item.title }}</a> - Fonte: {{ item.site_fonte }}</li><br>
+  {% endfor %} 
+  </ul>
 </body>
 </html>

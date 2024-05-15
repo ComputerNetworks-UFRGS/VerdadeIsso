@@ -20,8 +20,11 @@ def check_file(request):
                uploaded_file = form.save(commit=False) 
                uploaded_file.fake = True # Fakenews flag
                uploaded_file.save()
+               fakenews = UploadedFile.objects.get(hash_value=file_hash)
+               fakenews_sources = fakenews.Fontes.all()
+               content = list(fakenews_sources.values()) 
                return render(request, 'fake.html', {'content': content, 'file_hash': file_hash})
-            else:
+            else: # Aqui implementamos algo em caso da hash não existir
                uploaded_file = form.save() # Salva como checked file, mas não como fakenews
                # Aqui a gente implementa algo em caso de hash não existir.
                return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})

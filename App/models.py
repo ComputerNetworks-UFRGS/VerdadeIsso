@@ -12,7 +12,7 @@ class UploadedFile(models.Model):
     arquivo = models.FileField(upload_to='uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     hash_value = models.CharField(max_length=64, blank=True)
-    source = models.ManyToManyField(Sources)
+    Fontes = models.ManyToManyField(Sources)
 
     def save(self, *args, **kwargs):
         if not self.hash_value:

@@ -43,7 +43,7 @@ def upload_file(request):
             file_hash = hashlib.sha256(content.encode()).hexdigest()
             exists = UploadedFile.objects.filter(hash_value=file_hash).exists()
             if exists:
-               return render(request, 'existe.html', {'content': content, 'file_hash': file_hash})
+               return render(request, 'fake.html', {'content': content, 'file_hash': file_hash})
             else:
                uploaded_file = form.save()
                return render(request, 'upload_success.html', {'content': content, 'file_hash': file_hash})

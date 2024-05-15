@@ -1,10 +1,15 @@
 from django.db import models
 import hashlib
 
+class Sources(models.Model):
+    title = models.CharField(max_length=100, blank=True)
+    link = models.CharField(max_length=64, blank=True)
+    
 class UploadedFile(models.Model):
     arquivo = models.FileField(upload_to='uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     hash_value = models.CharField(max_length=64, blank=True)
+    source = models.ManyToManyField(Sources)
 
     def save(self, *args, **kwargs):
         if not self.hash_value:

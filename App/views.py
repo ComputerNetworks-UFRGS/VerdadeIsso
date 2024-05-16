@@ -4,6 +4,9 @@ import hashlib
 from .models import UploadedFile, UploadedText, CheckedFile, Sources
 from django.http import JsonResponse
 
+def index(request):
+    return render(request, 'index.html')
+
 
 def check_file(request):
     if request.method == 'POST':

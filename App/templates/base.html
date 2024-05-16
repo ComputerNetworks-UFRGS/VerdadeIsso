@@ -1,7 +1,7 @@
 {% load static %}
 
-<html>
-
+<!DOCTYPE html>
+<html  data-menu-color="brand">
     <head>
         <meta charset="utf-8" />
         <title>É Verdade Isso? - Ferramenta para Análise de Campanhas de Desinformações e Notícias Falsas.</title>
@@ -15,19 +15,19 @@
         <link href={% static "assets/libs/dropzone/min/dropzone.min.css" %} rel="stylesheet" type="text/css" />
         <link href={% static "assets/libs/dropify/css/dropify.min.css" %} rel="stylesheet" type="text/css" />
 
-		<!-- Theme Config Js -->
-		<script src={% static "assets/js/head.js" %}></script>
+	<!-- Theme Config Js -->
+	<script src={% static "assets/js/head.js" %}></script>
 
-		<!-- Bootstrap css -->
-		<link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+	<!-- Bootstrap css -->
+	 <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" /> 
 
-		<!-- App css -->
-		<link href={% static "assets/css/app.min.css" rel="stylesheet" %} type="text/css" />
+	<!-- App css -->
+	<link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
 
-		<!-- Icons css -->
-		<link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+	<!-- Icons css -->
+	<link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
 		
-		     <!-- Vendor js -->
+        <!-- Vendor js -->
         <script src={% static "assets/js/vendor.min.js" %}></script>
 
         <!-- App js -->
@@ -36,13 +36,75 @@
       
     </head>
 
-    <body>
-	
-    {% block page_content %}                 
-          {% endblock %}
-	</body>
+        <body>
+	<div id="wrapper">
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <!-- ========== Topbar Start ========== -->
+                <div class="navbar-custom">
+                    <div class="topbar">
+                        <div class="topbar-menu d-flex align-items-right gap-1">
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span><b>É Verdade Isso?</b></span>
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="topbar-menu d-flex align-items-center">
+
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span>Início</span>
+                                </a>
+                            </div>
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span>Estatísticas</span>
+                                </a>
+                            </div>
+
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span>Sobre</span>
+                                </a>
+                            </div>
+
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                 <span>Contato</span>
+                                </a>
+                            </div>
+
+                            
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="icon-login font-22"></i> 
+                                </a>
+                            </div>
+
+                            <!-- Light/Dark Mode Toggle Button -->
+                            <li class="d-none d-sm-inline-block">
+                                <div class="nav-link waves-effect waves-light" id="light-dark-mode">
+                                    <i class="ri-moon-line font-22"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- ========== Topbar End ========== -->
+		
+               <div class="content">
+          	<!-- Start Content-->
+		{% block page_content %}                 
+          	{% endblock %}
+		<!-- End Content-->
+		</div>
    
-   <!-- Footer Start -->
+        <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
@@ -59,5 +121,46 @@
                     </div>
                 </footer>
                 <!-- end Footer -->
-   
+        </div>
+	</div>
+
+        <!-- Theme Settings -->
+        <div class="offcanvas offcanvas-end right-bar" tabindex="-1" id="theme-settings-offcanvas">
+            <div class="d-flex align-items-center w-100 p-0 offcanvas-header">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-bordered nav-justified w-100" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link py-2" data-bs-toggle="tab" href="#chat-tab" role="tab">
+                            <i class="mdi mdi-message-text d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2" data-bs-toggle="tab" href="#tasks-tab" role="tab">
+                            <i class="mdi mdi-format-list-checkbox d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 active" data-bs-toggle="tab" href="#settings-tab" role="tab">
+                            <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+           
+        <!-- Vendor js -->
+        <script src={% static "assets/js/vendor.min.js"%}></script>
+
+        <!-- App js -->
+        <script src={% static "assets/js/app.min.js"%}></script>
+
+        <!-- Plugins js -->
+        <script src={% static "assets/libs/dropzone/min/dropzone.min.js"%}></script>
+        <script src={% static "assets/libs/dropify/js/dropify.min.js"%}></script>
+
+        <!-- Init js-->
+
+        <script src={% static "assets/js/pages/form-fileuploads.init.js"%}></script>
+
+	</body>   
 </html>

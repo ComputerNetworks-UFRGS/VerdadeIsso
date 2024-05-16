@@ -1,7 +1,6 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="pt-br" data-menu-color="brand">
+<html>
 
     <head>
         <meta charset="utf-8" />
@@ -27,14 +26,23 @@
 
 		<!-- Icons css -->
 		<link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+		
+		     <!-- Vendor js -->
+        <script src={% static "assets/js/vendor.min.js" %}></script>
+
+        <!-- App js -->
+        <script src={% static "assets/js/app.min.js" %}></script>
+
+      
     </head>
 
     <body>
-		
-		                    {% block page_content %}
-		                    
-                     {% endblock %}
-                <!-- Footer Start -->
+	
+    {% block page_content %}                 
+          {% endblock %}
+	</body>
+   
+   <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
                         <div class="row">
@@ -51,32 +59,5 @@
                     </div>
                 </footer>
                 <!-- end Footer -->
-
-            </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
-        </div>
-        <!-- END wrapper -->
-
-        </div>
-        
-        <!-- Vendor js -->
-        <script src={% static "assets/js/vendor.min.js" %}></script>
-
-        <!-- App js -->
-        <script src={% static "assets/js/app.min.js" %}></script>
-
-        <!-- Plugins js -->
-        <script src={% static "assets/libs/dropzone/min/dropzone.min.js" %}></script>
-        <script src={% static "assets/libs/dropify/js/dropify.min.js" %}></script>
-
-        <!-- Init js-->
-        <script src={% static "assets/js/pages/form-fileuploads.init.js" %}></script>
-        
-        
-    </body>
+   
 </html>

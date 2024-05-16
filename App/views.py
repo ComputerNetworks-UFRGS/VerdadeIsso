@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UploadFileForm, UploadTextForm, CheckFileForm
 import hashlib
-from .models import UploadedFile, UploadedText, CheckedFile
+from .models import UploadedFile, UploadedText, CheckedFile, Sources
 from django.http import JsonResponse
 
 
@@ -56,5 +56,7 @@ def upload_file(request):
     return render(request, 'upload.html', {'form': form, 'form2': form2})
     
 def data_dump(request):
-    return render(request, 'data_dump.html')
+    fatos = Sources.objects.all()
+    content = list(fatos.values())
+    return render(request, 'data_dump.html', {'content': content})
 

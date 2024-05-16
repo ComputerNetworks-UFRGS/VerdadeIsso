@@ -68,7 +68,7 @@ TEMPLATES = [
         },
     },
 ]
-
+	
 WSGI_APPLICATION = 'AgregadorFatos.wsgi.application'
 
 STATIC_URL = '/assets/'

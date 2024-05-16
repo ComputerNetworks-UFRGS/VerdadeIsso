@@ -11,10 +11,11 @@ class UploadFileForm(forms.ModelForm):
         fields = ['arquivo', 'Fontes']
        
 class UploadTextForm(forms.ModelForm):
-    texto = models.TextField()
+    texto = forms.CharField(widget=forms.Textarea)
+    Fontes = models.ManyToManyField(Sources)
     class Meta:
         model = UploadedText
-        fields = ['texto']
+        fields = ['texto', 'Fontes']
 
 class CheckFileForm(forms.ModelForm):
     arquivo = forms.FileField(label='Arquivo')

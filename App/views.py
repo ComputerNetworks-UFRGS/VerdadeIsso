@@ -36,8 +36,10 @@ def check_file(request):
 
 def upload_file(request):
     if request.method == 'POST':
+        submit_button = request.POST.get('submit_button', None)
+        print(submit_button)
         form = UploadFileForm(request.POST, request.FILES)
-        #form2 = UploadTextForm(request.POST)
+        form2 = UploadTextForm(request.POST)
         if form.is_valid():
             uploaded_file = form.cleaned_data
             # Read the content of the uploaded file
@@ -50,9 +52,20 @@ def upload_file(request):
             else:
                uploaded_file = form.save()
                return render(request, 'upload_success.html', {'content': content, 'file_hash': file_hash})
+        if form2.is_valid():
+            print("Formulario 2 enviado")
+            content = form2.cleaned_data
+            texto = content['texto']
+            text_hash = hashlib.sha256(texto.encode()).hexdigest()
+            exists = UploadedText.objects.filter(hash_value=text_hash).exists()
+            if exists:
+               return render(request, 'existe.html', {'content': content, 'file_hash': text_hash})
+            else:
+               content = form2.save()
+               return render(request, 'upload_success.html', {'content': texto, 'file_hash': text_hash})
     else:
-        form = UploadFileForm()
-        form2 = UploadTextForm()
+        form = UploadFileForm() # Form é o upload de arquivos
+        form2 = UploadTextForm() # Form2 é o upload de texto
     return render(request, 'upload.html', {'form': form, 'form2': form2})
     
 def data_dump(request):

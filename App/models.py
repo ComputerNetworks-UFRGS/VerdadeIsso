@@ -28,7 +28,7 @@ class UploadedFile(models.Model):
        return self.hash_value
 
 class CheckedFile(models.Model):
-    arquivo = models.FileField(upload_to='uploads/')
+    arquivo = models.FileField(upload_to='uploads/', blank=True)
     hash_value = models.CharField(max_length=64, blank=True)
     fake = models.BooleanField(default=False)
     checked_at = models.DateTimeField(auto_now_add=True)
@@ -48,15 +48,17 @@ class CheckedFile(models.Model):
        return self.hash_value
        
 class UploadedText(models.Model):
-    texto = models.TextField(max_length=1000)
+    texto = models.TextField(max_length=1000, default="Insira o texto que deseja verificar.")
     uploaded_at = models.DateTimeField(auto_now_add=True)
     hash_value = models.CharField(max_length=64, blank=True)
+    Fontes = models.ManyToManyField(Sources)
 
-    #def save(self, *args, **kwargs):
-        #if not self.hash_value:
-            # Calculate the hash of the file content
-            #hash_object = hashlib.sha256()
-            #for chunk in self.arquivo.chunks():
-             #   hash_object.update(chunk)
-            #self.hash_value = hash_object.hexdigest()
-        #super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.hash_value:
+            # Calculate the hash of the text content
+            hash_object = hashlib.sha256()
+            self.hash_value = hash_object.hexdigest()
+        super().save(*args, **kwargs)
+    
+    def __str__(self):
+       return self.hash_value

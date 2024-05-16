@@ -58,3 +58,6 @@ def upload_file(request):
 def data_dump(request):
     return render(request, 'data_dump.html')
 
+def home_page(request):
+    return render(request, 'index.html')
+

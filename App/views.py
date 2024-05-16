@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UploadFileForm, UploadTextForm, CheckFileForm
+from .forms import UploadFileForm, UploadTextForm, CheckFileForm, CheckTextForm
 import hashlib
 from .models import UploadedFile, UploadedText, CheckedFile, Sources
 from django.http import JsonResponse
@@ -11,7 +11,7 @@ def index(request):
 def check_file(request):
     if request.method == 'POST':
         form = CheckFileForm(request.POST, request.FILES)
-        #form2 = UploadTextForm(request.POST)
+        form2 = CheckTextForm(request.POST)
         if form.is_valid():
             uploaded_file = form.cleaned_data
             # Read the content of the uploaded file
@@ -31,10 +31,26 @@ def check_file(request):
                uploaded_file = form.save() # Salva como checked file, mas não como fakenews
                # Aqui a gente implementa algo em caso de hash não existir.
                return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})
+        if form2.is_valid():
+           uploaded_text = form2.cleaned_data
+           content = uploaded_text['texto']
+           text_hash = hashlib.sha256(content.encode()).hexdigest()
+           exists = UploadedText.objects.filter(hash_value=text_hash).exists()
+           if exists:
+              content = form2.save(commit=False)
+              content.fake = True
+              content.save()
+              fakenews = UploadedText.objects.get(hash_value=text_hash)
+              fakenews_sources = fakenews.Fontes.all()
+              content = list(fakenews_sources.values())
+              return render(request, 'fake.html', {'content': content, 'file_hash': text_hash})
+           else:
+              uploaded_text = form2.save()
+              return render(request, 'sem-hash.html', {'content': content, 'file_hash': text_hash})
     else:
         form = CheckFileForm()
-        #form2 = UploadTextForm()
-    return render(request, 'check.html', {'form': form})
+        form2 = CheckTextForm()
+    return render(request, 'check.html', {'form': form, 'form2': form2})
 
 
 def upload_file(request):

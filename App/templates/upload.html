@@ -12,10 +12,10 @@
         
 {% block page_content %}
 
-<h3>É Verdade Isso? - Ferramenta para Análise de Campanhas de Desinformações e Notícias Falsas.</h3>
+<h3>Ferramenta para Análise de Campanhas de Desinformações e Notícias Falsas.</h3>
 <h6>Utilizamos Inteligência Artificial (IA) e dados de veículos confiáveis de checagens de fatos para analisar a veracidade das informações compartilhadas durante períodos de calamidade pública.</h4>
                 <select id="selectOption">
-	<option value="option0">Seleciona uma opção</option>
+	<option value="option0">Selecione uma opção</option>
     <option value="option1">Arquivo</option>
     <option value="option2">Texto</option>
 </select>
@@ -24,9 +24,9 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Envie seu arquivo</h4>
+                                        <h4 class="header-title">Envie o arquivo</h4>
                                         <p class="sub-header">
-TBD                                                                <strong>Formatos aceitos: .jpg, .png, .mp4 e .txt</span>
+Adicionaremos em nossa base dados o arquivo como fonte de desinformação e as provas de desinformação referentes ao conteúdo. <br> <strong>Formatos aceitos: .jpg, .png, .mp4 e .txt</span>
 
                              <form enctype="multipart/form-data" method="post" class="dropzone" id="formOption1" data-plugin="dropzone" data-previews-container="#file-previews"
                                             data-upload-preview-template="#uploadPreviewTemplate">
@@ -45,10 +45,9 @@ TBD                                                                <strong>Forma
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Envie seu texto</h4>
+                                        <h4 class="header-title">Adicione o texto</h4>
                                         <p class="sub-header">
-Verificaremos em nossa base de dados se texto é oriundo de campanhas de desinformação ou contém informações incorretas.                                        </p>
-                                                                <strong>Até 1000 caracteres</span>	
+Adicionaremos em nossa base dados o texto como fonte de desinformação e as provas de desinformação referentes ao conteúdo. <br><strong>Tamanho máximo: Até 1000 caracteres</span>	
                            <form enctype="multipart/form-data" method="post" class="dropzone" id="formOption2" data-plugin="dropzone" data-previews-container="#file-previews">
 								{% csrf_token %}
 								{{ form2.as_p }}

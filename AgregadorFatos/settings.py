@@ -71,7 +71,7 @@ TEMPLATES = [
 	
 WSGI_APPLICATION = 'AgregadorFatos.wsgi.application'
 
-STATIC_URL = '/assets'
+STATIC_URL = '/assets/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, '/AgregadorFatos/templates/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')

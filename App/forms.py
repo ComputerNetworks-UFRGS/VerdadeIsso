@@ -1,6 +1,6 @@
 
 from django import forms
-from .models import UploadedFile, UploadedText, CheckedFile, Sources
+from .models import UploadedFile, UploadedText, CheckedFile, Sources, CheckedText
 from django.db import models
 
 class UploadFileForm(forms.ModelForm):
@@ -23,3 +23,10 @@ class CheckFileForm(forms.ModelForm):
     class Meta:
         model = CheckedFile
         fields = ['arquivo']
+
+class CheckTextForm(forms.ModelForm):
+    texto = forms.CharField(widget=forms.Textarea)
+    fake = models.BooleanField(default=False)
+    class Meta:
+        model = CheckedText
+        fields = ['texto']

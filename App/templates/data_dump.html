@@ -41,7 +41,6 @@
                         <!-- end page title -->
 
 
-
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -58,26 +57,24 @@
                                                     <th>Noticia</th>
                                                     <th>Link</th>
                                                     <th>Fonte</th>
-                                                    <th>Data</th>
+                                                    <th>Data de Adição</th>
                                     
                                                 </tr>
                                             </thead>
                                         
                                         
                                             <tbody>
+												
+											{% for item in content %}
+
+
                                                 <tr>
-                                                    <td>testeeeeeee fsadfdsf fdsfdsfds</td>
-                                                    <td>www.boatos.org</td>
-                                                    <td>Boatos.org</td>
-                                                    <td>16/05/2024</td>
+                                                    <td>{{ item.title }}</td>
+                                                    <td>{{ item.link }}</td>
+                                                    <td>{{ item.web_source }}</td>
+                                                    <td>{{ item.added_at|date:"d/m/Y" }}</td>
                                                 </tr>
-                                                <tr>
-                                                     <td>testeeeeeee fsadfdsf fdsfdsfds</td>
-                                                    <td>www.boatos.org</td>
-                                                    <td>Boatos.org</td>
-                                                    <td>16/05/2024</td>
-                                                </tr>
-                                              
+												{% endfor %}
                                             </tbody>
                                         </table>
                                         
@@ -102,10 +99,6 @@
 
             </div>
 
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
 
         </div>
         <!-- END wrapper -->
@@ -126,7 +119,6 @@
         <script src="{% static 'assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
         <script src="{% static 'assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js' %}"></script>
         <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
-        <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
         <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
         <script src="{% static 'assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js' %}"></script>
         <script src="{% static 'assets/libs/datatables.net-select/js/dataTables.select.min.js' %}"></script>
@@ -136,7 +128,7 @@
 
         <!-- Datatables init -->
         <script src="{% static 'assets/js/pages/datatables.init.js' %}"></script>
-        
+     
     {% endblock %}
 
 </html>

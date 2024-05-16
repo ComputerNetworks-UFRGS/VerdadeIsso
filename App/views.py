@@ -36,8 +36,6 @@ def check_file(request):
 
 def upload_file(request):
     if request.method == 'POST':
-        submit_button = request.POST.get('submit_button', None)
-        print(submit_button)
         form = UploadFileForm(request.POST, request.FILES)
         form2 = UploadTextForm(request.POST)
         if form.is_valid():
@@ -53,7 +51,6 @@ def upload_file(request):
                uploaded_file = form.save()
                return render(request, 'upload_success.html', {'content': content, 'file_hash': file_hash})
         if form2.is_valid():
-            print("Formulario 2 enviado")
             content = form2.cleaned_data
             texto = content['texto']
             text_hash = hashlib.sha256(texto.encode()).hexdigest()

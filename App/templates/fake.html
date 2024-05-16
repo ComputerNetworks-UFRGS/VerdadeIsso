@@ -4,12 +4,138 @@
 <head>
     <title>FAKE</title>
 </head>
-<body>
+
+{% extends "App/templates/base.html" %}
+{% load static %}
+
+    <head>
+       
+       <!-- third party css -->
+        <link href="{% static 'assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+       <!-- Theme Config Js -->
+		<script src={% static "assets/js/head.js" %}></script>
+
+		<!-- Bootstrap css -->
+		<link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+		<!-- App css -->
+		<link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+		<!-- Icons css -->
+		<link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+    </head>
+    
+{% block page_content %}
+        <!-- Begin page -->
+        <div id="wrapper">                   
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                <h4 class="page-title">Resultado da Análise</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="header-title">Desinformação!</h4>
+                                        <p class="text-muted font-13 mb-4">
   O conteúdo analisado é FALSO. Segue abaixo fontes com informações sobre o porquê o conteúdo é falso e desinformativo.<br>
-  <ul>
-  {% for item in content %} 
-  <li><a href="{{ item.link }}">{{ item.title }}</a> - Fonte: {{ item.site_fonte }}</li><br>
-  {% endfor %} 
-  </ul>
-</body>
+                                        </p>
+
+                                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>Noticia</th>
+                                                    <th>Link</th>
+                                                    <th>Fonte</th>
+                                                    <th>Data de Adição</th>
+                                    
+                                                </tr>
+                                            </thead>
+                                        
+                                        
+                                            <tbody>
+												
+											{% for item in content %}
+
+
+                                                <tr>
+                                                    <td>{{ item.title }}</td>
+                                                    <td>{{ item.link }}</td>
+                                                    <td>{{ item.web_source }}</td>
+                                                    <td>{{ item.added_at|date:"d/m/Y" }}</td>
+                                                </tr>
+												{% endfor %}
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
+
+
+
+
+                        
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+
+            </div>
+
+
+        </div>
+        <!-- END wrapper -->
+
+      
+        
+        <!-- Vendor js -->
+        <script src={% static "assets/js/vendor.min.js" %}></script>
+
+        <!-- App js -->
+        <script src={% static "assets/js/app.min.js" %}></script>
+
+                      <!-- third party js -->
+        <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-select/js/dataTables.select.min.js' %}"></script>
+        <script src="{% static 'assets/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+        <script src="{% static 'assets/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+        <!-- third party js ends -->
+
+        <!-- Datatables init -->
+        <script src="{% static 'assets/js/pages/datatables.init.js' %}"></script>
+     
+    {% endblock %}
+
 </html>

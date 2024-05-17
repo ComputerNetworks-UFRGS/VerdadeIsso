@@ -1,5 +1,7 @@
 {% load static %}
-<html>
+
+<!DOCTYPE html>
+<html  data-menu-color="brand">
     <head>
         <meta charset="utf-8" />
         <title>É Verdade Isso? - Ferramenta para Análise de Campanhas de Desinformações e Notícias Falsas.</title>
@@ -7,113 +9,164 @@
         <meta content="AgregadorFatos" name="UFRGS" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href={% static "assets/images/favicon.ico" %}>
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- Plugins css -->
         <link href={% static "assets/libs/dropzone/min/dropzone.min.css" %} rel="stylesheet" type="text/css" />
         <link href={% static "assets/libs/dropify/css/dropify.min.css" %} rel="stylesheet" type="text/css" />
 
+	<!-- Theme Config Js -->
+	<script src={% static "assets/js/head.js" %}></script>
+
+	<!-- Bootstrap css -->
+	 <link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" /> 
+
+	<!-- App css -->
+	<link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+	<!-- Icons css -->
+	<link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+		
+        <!-- Vendor js -->
+        <script src={% static "assets/js/vendor.min.js" %}></script>
+
+        <!-- App js -->
+        <script src={% static "assets/js/app.min.js" %}></script>
+
+      
     </head>
 
-    <body>
-      <!-- Theme Config Js -->
-      <script src={% static "assets/js/head.js" %}></script>
+        <body>
+	<div id="wrapper">
 
-      <!-- Bootstrap css -->
-      <link href={% static "assets/css/bootstrap.css" %} rel="stylesheet" type="text/css" id="app-style" />
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
 
-      <!-- App css -->
-      <link href={% static "assets/css/app.css" %} rel="stylesheet"  type="text/css" />
+            <div class="content-page">
+                <!-- ========== Topbar Start ========== -->
+                <div class="navbar-custom">
+                    <div class="topbar">
+                        <div class="topbar-menu d-flex align-items-right gap-1">
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span><b>É Verdade Isso?</b></span>
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="topbar-menu d-flex align-items-center">
 
-      <!-- Begin page -->
-      <div id="wrapper">
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="/" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <span>Início</span>
+                                </a>
+                            </div>
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="/check/" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span>Checar</span>
+                                </a>
+                            </div>
 
-        <!-- ========== Menu ========== -->
-        <div class="app-menu">
-            <!-- Brand Logo -->
-            <div class="logo-box">
-                <!-- Brand Logo Light -->
-                <a href="{% url 'home_page' %}" class="logo-light">
-                  <img src={% static "assets/images/logo-nome.png" %} alt="logo" class="logo-lg">
-                  <img src={% static "assets/images/logo-nome.png" %} alt="small logo" class="logo-sm">
-                </a>
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="/data/" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span>Estatísticas</span>
+                                </a>
+                            </div>
 
-                <!-- Brand Logo Dark -->
-                <a href="{% url 'home_page' %}" class="logo-dark">
-                  <img src={% static "assets/images/logo-nome.png" %} alt="dark logo" class="logo-lg">
-                  <img src={% static "assets/images/logo-nome.png" %} alt="small logo" class="logo-sm">
-                </a>
-            </div>
-            <!-- menu-left -->
-            <div class="scrollbar">
-                <!--- Menu -->
-                <ul class="menu">
-                    <li class="menu-title">É Verdade isso ?</li>
-                    <li class="menu-item">
-                        <a href="{% url 'check_file' %}" class="menu-link">
-                            <span class="menu-icon"><i data-feather="alert-circle"></i></span>
-                            <span class="menu-text"> Analisar Arquivo </span>
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="/about/" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span>Sobre</span>
+                                </a>
+                            </div>
+
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="/contact/" role="button" aria-haspopup="false" aria-expanded="false">
+                                 <span>Contato</span>
+                                </a>
+                            </div>
+
+                            
+                            <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                    <i class="icon-login font-22"></i> 
+                                </a>
+                            </div>
+
+                            <!-- Light/Dark Mode Toggle Button -->
+                            <li class="d-none d-sm-inline-block">
+                                <div class="nav-link waves-effect waves-light" id="light-dark-mode">
+                                    <i class="ri-moon-line font-22"></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- ========== Topbar End ========== -->
+		
+               <div class="content">
+          	<!-- Start Content-->
+		{% block page_content %}                 
+          	{% endblock %}
+		<!-- End Content-->
+		</div>
+   
+        <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div><script>document.write(new Date().getFullYear())</script> © É Verdade Isso? - <a href="http://hackathon.sbc.org.br/hsclima/">Hacktoon da Solidariedade Climática (HSCLIMA)</a></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end footer-links">
+                                    <a href="javascript: void(0);">Sobre</a>
+                                    <a href="javascript: void(0);">Github</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+        </div>
+	</div>
+
+        <!-- Theme Settings -->
+        <div class="offcanvas offcanvas-end right-bar" tabindex="-1" id="theme-settings-offcanvas">
+            <div class="d-flex align-items-center w-100 p-0 offcanvas-header">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-bordered nav-justified w-100" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link py-2" data-bs-toggle="tab" href="#chat-tab" role="tab">
+                            <i class="mdi mdi-message-text d-block font-22 my-1"></i>
                         </a>
-                        <a href="{% url 'upload_file' %}" class="menu-link">
-                            <span class="menu-icon"><i data-feather="upload"></i></span>
-                            <span class="menu-text"> Enviar um fake </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2" data-bs-toggle="tab" href="#tasks-tab" role="tab">
+                            <i class="mdi mdi-format-list-checkbox d-block font-22 my-1"></i>
                         </a>
-                        <a href="{% url 'data_dump' %}" class="menu-link">
-                            <span class="menu-icon"><i data-feather="database"></i></span>
-                            <span class="menu-text"> Dados </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-2 active" data-bs-toggle="tab" href="#settings-tab" role="tab">
+                            <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
                         </a>
                     </li>
                 </ul>
-                <!--- End Menu -->
-                <div class="clearfix"></div>
             </div>
         </div>
-        <!-- ========== Menu End ========== -->
+           
+        <!-- Vendor js -->
+        <script src={% static "assets/js/vendor.min.js"%}></script>
 
-        <!-- Content Page Start -->
-        <div class="content-page">
-          <div class="content">
-            {% block page_content %}
-            {% endblock %}
-          </div>
+        <!-- App js -->
+        <script src={% static "assets/js/app.min.js"%}></script>
 
-           <!-- Footer Start -->
-           <footer class="footer">
-               <div class="container-fluid">
-                   <div class="row">
-                       <div class="col-md-6">
-                           <div><script>document.write(new Date().getFullYear())</script> © É Verdade Isso? - <a href="http://hackathon.sbc.org.br/hsclima/">Hacktoon da Solidariedade Climática (HSCLIMA)</a></div>
-                       </div>
-                       <div class="col-md-6">
-                           <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end footer-links">
-                               <a href="javascript: void(0);">Sobre</a>
-                               <a href="javascript: void(0);">Github</a>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </footer>
-           <!-- End Footer -->
-        </div>
-        <!-- Content Page End -->
+        <!-- Plugins js -->
+        <script src={% static "assets/libs/dropzone/min/dropzone.min.js"%}></script>
+        <script src={% static "assets/libs/dropify/js/dropify.min.js"%}></script>
 
-      </div>
-      <!-- End page -->
+        <!-- Init js-->
 
-      <!-- Vendor js -->
-      <script src={% static "assets/js/vendor.min.js" %}></script>
+        <script src={% static "assets/js/pages/form-fileuploads.init.js"%}></script>
 
-      <!-- App js -->
-      <script src={% static "assets/js/app.min.js" %}></script>
-
-      <!-- Plugins js-->
-      <!-- <script src="assets/libs/flatpickr/flatpickr.min.js"></script> -->
-      <!-- <script src="assets/libs/apexcharts/apexcharts.min.js"></script> -->
-      <!-- <script src="assets/libs/selectize/js/standalone/selectize.min.js"></script> -->
-
-      <!-- Dashboard 1 init js-->
-      <script src={% static "assets/js/pages/dashboard-1.init.js" %}></script>
-
-    </body>
-
+	</body>   
 </html>

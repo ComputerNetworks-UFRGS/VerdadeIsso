@@ -7,7 +7,7 @@ File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 :root {
-  --ct-logo-lg-height: 20px;
+  --ct-logo-lg-height: 50px;
   --ct-logo-sm-height: 22px;
   --ct-leftbar-width: 240px;
   --ct-leftbar-width-md: 175px;
@@ -60,10 +60,10 @@ html[data-bs-theme=dark] {
 }
 
 html[data-menu-color=light] {
-  --ct-menu-bg: #fff;
-  --ct-menu-item-color: #6c757d;
-  --ct-menu-item-hover-color: #7e57c2;
-  --ct-menu-item-active-color: #7e57c2;
+  --ct-menu-bg: #fff6f6;
+  --ct-menu-item-color: #1c0101;
+  --ct-menu-item-hover-color: #f61d23;
+  --ct-menu-item-active-color: #000;
   --ct-menu-icon-twotone-fill: rgba(126, 87, 194, 0.2);
   --ct-menu-item-active-bg: rgba(126, 87, 194, 0.2);
 }

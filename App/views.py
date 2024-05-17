@@ -3,6 +3,25 @@ from .forms import UploadFileForm, UploadTextForm, CheckFileForm, CheckTextForm
 import hashlib
 from .models import UploadedFile, UploadedText, CheckedFile, Sources
 from django.http import JsonResponse
+from accounts.models import User
+from accounts.forms import UserCreationForm, Autenticacao
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.contrib import messages
+
+class MyLoginView(LoginView):
+    redirect_authenticated_user = True
+    
+    def get_success_url(self):
+        return reverse_lazy('upload_file')
+    
+    def form_invalid(self, form):
+        messages.error(self.request,'Erro: Nome de usuário incorreto ou senha inválida')
+        return self.render_to_response(self.get_context_data(form=form))
+
 
 def index(request):
     return render(request, 'index.html')
@@ -52,7 +71,7 @@ def check_file(request):
         form2 = CheckTextForm()
     return render(request, 'check.html', {'form': form, 'form2': form2})
 
-
+@login_required
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)

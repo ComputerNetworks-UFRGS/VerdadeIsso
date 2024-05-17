@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'App'
+    'App',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,7 @@ STATIC_URL = '/assets/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, '/AgregadorFatos/templates/')
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+LOGIN_URL = '/login/'
 
 
 # Database

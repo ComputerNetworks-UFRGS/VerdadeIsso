@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import MyLoginView
 
 urlpatterns = [
     path('check/', views.check_file, name='check_file'),
@@ -7,4 +8,5 @@ urlpatterns = [
     path('upload/success/', views.upload_file, name='upload_file_success'),
     path('data/', views.data_dump, name='data_dump'),
     path('', views.home_page, name='home_page'),
+    path('login/', MyLoginView.as_view(template_name='App/templates/login/login.html'),name='login'),
 ]

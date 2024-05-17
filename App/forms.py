@@ -1,4 +1,3 @@
-
 from django import forms
 from .models import UploadedFile, UploadedText, CheckedFile, Sources, CheckedText
 from django.db import models

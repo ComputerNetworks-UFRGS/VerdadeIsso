@@ -31,9 +31,9 @@ def check_file(request):
         if form.is_valid():
             uploaded_file = form.cleaned_data
             # Read the content of the uploaded file
-            content = uploaded_file['arquivo'].read().decode('utf-8')
+            content = uploaded_file['arquivo'].read()
             # Calculate the hash of the content
-            file_hash = hashlib.sha256(content.encode()).hexdigest()
+            file_hash = hashlib.sha256(content).hexdigest()
             exists = UploadedFile.objects.filter(hash_value=file_hash).exists()
             if exists:
                uploaded_file = form.save(commit=False) 
@@ -76,9 +76,9 @@ def upload_file(request):
         if form.is_valid():
             uploaded_file = form.cleaned_data
             # Read the content of the uploaded file
-            content = uploaded_file['arquivo'].read().decode('utf-8')
+            content = uploaded_file['arquivo'].read()
             # Calculate the hash of the content
-            file_hash = hashlib.sha256(content.encode()).hexdigest()
+            file_hash = hashlib.sha256(content).hexdigest()
             exists = UploadedFile.objects.filter(hash_value=file_hash).exists()
             if exists:
                return render(request, 'existe.html', {'content': content, 'file_hash': file_hash})

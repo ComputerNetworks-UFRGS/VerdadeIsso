@@ -42,26 +42,5 @@ CheckedFile.objects.all().delete()
 CheckedText.objects.all().delete()
 
 # Add sources from websites
-#search_facts(['RS', 'Rio Grande do Sul', 'Enchentes'], 'API') # Change API for Google API Key
-
-# Database eraser
-#Sources.objects.all().delete()
-UploadedFile.objects.all().delete()
-UploadedText.objects.all().delete()
-CheckedFile.objects.all().delete()
-CheckedText.objects.all().delete()
-
-textosfake = UploadedText.objects.create(texto = "O RS está procurando duas gaúchas…, precisam da ajuda delas! É uma tal de XUXA e outra se chama MANUELA DÁVILA (essa, até o padre está procurando, porque ela não voltou na missa") # Adiciona o conteúdo fake
-textosfake.save()
-fonte, _ = Sources.objects.get_or_create(id=64) # Add id of the fakenews source
-textosfake.Fontes.add(fonte)
-textosfake.save()
-
-with open('video.mp4', 'rb') as file:
-   arquivosfake = UploadedFile.objects.create(arquivo="video.mp4")
-   arquivosfake.save()
-fonte, _ = Sources.objects.get_or_create(id=66) # Add id of the fakenews source
-arquivosfake.Fontes.add(fonte)
-arquivosfake.save()
-
+search_facts(['RS', 'Rio Grande do Sul', 'Enchentes'], 'API') # Change API for Google API Key
 

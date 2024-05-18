@@ -65,6 +65,7 @@
                                                     <th>Link</th>
                                                     <th>Fonte</th>
                                                     <th>Data de Adição</th>
+                                                    <th>Desinformações</th>
                                     
                                                 </tr>
                                             </thead>
@@ -80,6 +81,8 @@
                                                     <td>{{ item.link }}</td>
                                                     <td>{{ item.web_source }}</td>
                                                     <td>{{ item.added_at|date:"d/m/Y" }}</td>
+                                                    <td><a href="/data/{{item.id}}">Exemplos</a></td>
+
                                                 </tr>
 												{% endfor %}
                                             </tbody>

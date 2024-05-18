@@ -29,7 +29,7 @@ Verificaremos em nossa base de dados se o conteúdo arquivo é oriundo de campan
                                             data-upload-preview-template="#uploadPreviewTemplate">
 								{% csrf_token %}
 								{{ form.as_p }}
-					<button type="submit">Checar</button>
+					<button type="submit">Analisar</button>
 					</form>
 
                                     </div> <!-- end card-body-->
@@ -50,7 +50,7 @@ Verificaremos em nossa base de dados se texto é oriundo de campanhas de desinfo
                            <form enctype="multipart/form-data" method="post" class="dropzone" id="formOption2" data-plugin="dropzone" data-previews-container="#file-previews">
 								{% csrf_token %}
 								{{ form2.as_p }}
-									<button type="submit" id="submit_button_2" form="formOption2" name="submit_button" value="form2">Enviar Texto</button>	
+									<button type="submit" id="submit_button_2" form="formOption2" name="submit_button" value="form2">Analisar</button>	
 						</form>    
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->

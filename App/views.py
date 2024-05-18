@@ -23,9 +23,6 @@ class MyLoginView(LoginView):
         return self.render_to_response(self.get_context_data(form=form))
 
 
-def index(request):
-    return render(request, 'index.html')
-
 
 def check_file(request):
     if request.method == 'POST':
@@ -110,7 +107,6 @@ def data_dump(request):
     fake_text = list(fake.values())
     return render(request, 'data_dump.html', {'content': content, 'fake': fake_text})
 
-
 def fake_samples(request, value_id):
     fonte_title = Sources.objects.get(id=value_id) # Return the title of a source the specific ID
     fake_text = UploadedText.objects.prefetch_related('Fontes') # Get all texts uploaded and its sources association
@@ -120,3 +116,8 @@ def fake_samples(request, value_id):
     
 def home_page(request):
     return render(request, 'index.html')
+
+def index(request):
+    fatos = Sources.objects.all()
+    content = list(fatos.values())
+    return render(request, 'index.html', {'content': content})

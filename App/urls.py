@@ -9,5 +9,7 @@ urlpatterns = [
     path('data/', views.data_dump, name='data_dump'),
     path('data/<int:value_id>/', views.fake_samples, name='data_dump'),
     path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
     path('login/', MyLoginView.as_view(template_name='App/templates/login/login.html'),name='login'),
 ]

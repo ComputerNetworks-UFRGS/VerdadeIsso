@@ -114,8 +114,11 @@ def fake_samples(request, value_id):
         fontes = text.Fontes.all()
     return render(request, 'fake_samples.html', {'fake_text': fake_text, 'fontes': fontes, 'value_id': value_id, 'fonte_title': fonte_title})
     
-def home_page(request):
-    return render(request, 'index.html')
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
 
 def index(request):
     fatos = Sources.objects.all()

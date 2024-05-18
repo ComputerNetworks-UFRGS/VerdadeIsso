@@ -1,68 +1,62 @@
 {% extends "App/templates/base.html" %}
 {% load static %}
 {% block page_content %}
-        <!-- Begin page -->
-        <div id="wrapper">
-                <div class="content">
+     <!-- Begin page -->
+<div id="wrapper">
+    <div class="content">
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                <h4 class="page-title">Dados de Desinformação</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="header-title">Lista de Notícias</h4>
-                                        <p class="text-muted font-13 mb-4">
-                                          Na tabela estão representados todos os dados coletados de fontes confiáveis que realizam o trabalho de verificar conteúdo com desinformação. <br>Coletamos estes dados periodicamente como base para que nossos algoritmos e curadores possam mapear fontes confiáveis sobre conteúdos de desinformação.
-                                        </p>
-
-                                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Noticia</th>
-                                                    <th>Link</th>
-                                                    <th>Fonte</th>
-                                                    <th>Data</th>
-                                                    <th>Versões</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-											
-											{% for item in content %}
-
-
-                                                <tr>
-                                                    <td>{{ item.title }}</td>
-                                                    <td>{{ item.link }}</td>
-                                                    <td>{{ item.web_source }}</td>
-                                                    <td>{{ item.added_at|date:"d/m/Y" }}</td>
-                                                    <td><a href="/data/{{item.id}}">Exemplos</a></td>
-                                                </tr>
-												{% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                        </div>
-                        <!-- end row-->
-                            </div><!-- end col-->
-                        </div>
-                        <!-- end row-->
-                    </div> <!-- container -->
-                </div> <!-- content -->
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <!-- Start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">Dados de Desinformação</h4>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- END wrapper -->
+            <!-- End page title -->
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Lista de Notícias</h4>
+                            <p class="text-muted font-13 mb-4">
+                                Na tabela estão representados todos os dados coletados de fontes confiáveis que realizam o trabalho de verificar conteúdo com desinformação. <br> 
+                                Coletamos estes dados periodicamente como base para que nossos algoritmos e curadores possam mapear fontes confiáveis sobre conteúdos de desinformação.
+                            </p>
+
+                            <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Notícia</th>
+                                        <th>Link</th>
+                                        <th>Fonte</th>
+                                        <th>Data</th>
+                                        <th>Versões</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in content %}
+                                    <tr>
+                                        <td>{{ item.title }}</td>
+                                        <td>{{ item.link }}</td>
+                                        <td>{{ item.web_source }}</td>
+                                        <td>{{ item.added_at|date:"d/m/Y" }}</td>
+                                        <td><a href="/data/{{ item.id }}">Exemplos</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div> <!-- End card body -->
+                    </div> <!-- End card -->
+                </div> <!-- End col -->
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </div> <!-- End content -->
+</div>
+<!-- END wrapper -->
 
         <!-- third party js -->
         <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>

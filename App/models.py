@@ -66,7 +66,7 @@ class UploadedText(models.Model):
     texto = models.TextField(max_length=1000, default="Insira o texto que deseja verificar.")
     uploaded_at = models.DateTimeField(auto_now_add=True)
     hash_value = models.CharField(max_length=64, blank=True)
-    Fontes = models.ManyToManyField(Sources)
+    Fontes = models.ManyToManyField(Sources, related_name='texto')
 
     def save(self, *args, **kwargs):
         if not self.hash_value:

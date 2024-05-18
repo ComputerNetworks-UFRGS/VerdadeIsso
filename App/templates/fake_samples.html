@@ -20,46 +20,37 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="header-title">Lista de Notícias</h4>
+                                        <h4 class="header-title">Lista de Informações Falsas</h4>
                                         <p class="text-muted font-13 mb-4">
-                                          Na tabela estão representados todos os dados coletados de fontes confiáveis que realizam o trabalho de verificar conteúdo com desinformação. <br>Coletamos estes dados periodicamente como base para que nossos algoritmos e curadores possam mapear fontes confiáveis sobre conteúdos de desinformação.
-                                        </p>
-
-                                        <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>Noticia</th>
-                                                    <th>Link</th>
-                                                    <th>Fonte</th>
-                                                    <th>Data de Adição</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-											
-											{% for item in content %}
-
-
-                                                <tr>
-                                                    <td>{{ item.title }}</td>
-                                                    <td>{{ item.link }}</td>
-                                                    <td>{{ item.web_source }}</td>
-                                                    <td>{{ item.added_at|date:"d/m/Y" }}</td>
-                                                </tr>
-												{% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- end card body-->
+							Abaio estão exemplos de informações falsas sendo disseminadas relacionadas a fonte selecionada.</p>
+							<h4>Nóticia de Verificação: {{ fonte_title }}</h4><br>
+						
+											{% for fake in fake_text %}
+												{% for fonte in fake.Fontes.all %}
+													{% if fonte.id == value_id %}
+  <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Atenção: O conteúdo contém desinformação.</h4>
+                                        <p class="text-muted font-13 mb-4">													   
+											<a>{{ fake.texto }}</a><br> 
+									</div> <!-- end card body-->
                                 </div> <!-- end card -->
                             </div><!-- end col-->
                         </div>
                         <!-- end row-->
+                      	
+                        
+                        									{% endif %}
+												{% endfor %}
+											{% endfor %}
+
+										
+                        
                             </div><!-- end col-->
                         </div>
-                        <!-- end row-->
-                    </div> <!-- container -->
-                </div> <!-- content -->
-            </div>
-        </div>
+               
         <!-- END wrapper -->
 
         <!-- third party js -->

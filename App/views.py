@@ -99,14 +99,24 @@ def upload_file(request):
                content = form2.save()
                return render(request, 'upload_success.html', {'content': texto, 'file_hash': text_hash})
     else:
-        form = UploadFileForm() # Form é o upload de arquivos
-        form2 = UploadTextForm() # Form2 é o upload de texto
+        form = UploadFileForm() # Form is to upload files
+        form2 = UploadTextForm() # Form2 is to upload text
     return render(request, 'upload.html', {'form': form, 'form2': form2})
     
 def data_dump(request):
     fatos = Sources.objects.all()
     content = list(fatos.values())
-    return render(request, 'data_dump.html', {'content': content})
+    fake = UploadedText.objects.all() # Return all fakenews already uploaded
+    fake_text = list(fake.values())
+    return render(request, 'data_dump.html', {'content': content, 'fake': fake_text})
 
+
+def fake_samples(request, value_id):
+    fonte_title = Sources.objects.get(id=value_id) # Return the title of a source the specific ID
+    fake_text = UploadedText.objects.prefetch_related('Fontes') # Get all texts uploaded and its sources association
+    for text in fake_text:
+        fontes = text.Fontes.all()
+    return render(request, 'fake_samples.html', {'fake_text': fake_text, 'fontes': fontes, 'value_id': value_id, 'fonte_title': fonte_title})
+    
 def home_page(request):
     return render(request, 'index.html')

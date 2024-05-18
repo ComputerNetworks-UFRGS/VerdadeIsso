@@ -57,6 +57,14 @@ fonte, _ = Sources.objects.get_or_create(id=64) # Add id of the fakenews source
 textosfake.Fontes.add(fonte)
 textosfake.save()
 
+noticias = ["Se deixar, o prefeito de CANOAS muda o nome da cidade para HAVANA DO SUL. Jairo Jorge, do PSD, baixou um decreto para tomar bens particulares e distribuir à população. Tudo fica pior ao saber que somente a prefeitura quer aparecer na foto. Toda a distribuição está centralizada nas mãos do prefeito e seus capangas, que não deixa ninguém mais entregar os mantimentos necessários. Entenda: a prefeitura quer ser A ÚNICA a distribuir as doações que chegam do Brasil inteiro, e até do exterior. Em troca, ela exige um cadastro de quem recebe. Qual o objetivo do patife? Votos, apenas votos. Jairo Jorge está explorando o desespero da população pensando nas eleições. Veja o decreto.", "tá sabendo da denúncia da edição de um decreto que o Jairo Jorge fez, dando poder pra prefeitura confiscar doações privadas???? “Requisição administrativa de bens privados”", "URGENTE – Segundo esta denúncia, a prefeitura de Canoas está monopolizando as doações e mentindo para a população Estão afirmando que as cestas básicas foram compradas pela prefeitura quando na verdade trata-se de doações voluntárias.", "URGENTE – Segundo esta denúncia, a prefeitura de Canoas está monopolizando as doações e mentindo para a população", "Absurdo dos absurdos, prefeito de Canoas emite um decreto o de confisca as doações, isso é um absurdo do tamanho do mundo, ele não pode confiscar bens de outros isso é ditadura.", "Através de decreto, o prefeito de Canoas, confisca as doações, os PETRALHAS não param!!! Lembrando, é amiguinho do MONTANHA!!!", "PREFEITO DE CANOAS ( PT ), EDITOU DECRETO DE APROPRIAÇÃO DE DONATIVOS. E ESTÁ REEMBALANDO COM SELO DO GOVERNO FEDERAL. PT É UMA ORGANIZAÇÃO CRIMINOSA DE FILHOS DE PUTA !"]
+for i in noticias:
+   textosfake = UploadedText.objects.create(texto=i) # Adiciona o conteúdo fake
+   textosfake.save()
+   fonte, _ = Sources.objects.get_or_create(id=112) # Add id of the fakenews source
+   textosfake.Fontes.add(fonte)
+   textosfake.save()
+
 with open('video.mp4', 'rb') as file:
    arquivosfake = UploadedFile.objects.create(arquivo="video.mp4")
    arquivosfake.save()

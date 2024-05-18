@@ -5,16 +5,7 @@
  <!-- Start Content-->
                     <div class="container-fluid">
                         
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <h4 class="page-title"><h4>Place Holder Title </h4><center>
-                                    <p>Utilizamos Inteligência Artificial (IA) e dados de veículos confiáveis de checagens de fatos para analisar a veracidade das informações compartilhadas durante períodos de calamidade pública.</center></p>
-                                </div>
-                            </div>
-                        </div>
-			
+			<br>			
                         <!-- end page title -->
 			   <div class="row align-center">
 
@@ -100,6 +91,43 @@
                         </div>
                         <!-- end row-->
                     </div> <!-- container -->
+			<br>		
+                    <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Últimas Notícias</h4>
+
+                                        <table class="table table-striped dt-responsive nowrap w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>Noticia</th>
+                                                    <th>Link</th>
+                                                    <th>Fonte</th>
+                                                    <th>Data de Adição</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+												
+											{% for item in content %}
+
+
+                                                <tr>
+                                                    <td>{{ item.title }}</td>
+                                                    <td>{{ item.link }}</td>
+                                                    <td>{{ item.web_source }}</td>
+                                                    <td>{{ item.added_at|date:"d/m/Y" }}</td>
+                                                </tr>
+												{% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+                        <!-- end row-->
+			</div>
+
 
 {% endblock %}
    

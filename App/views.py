@@ -23,9 +23,6 @@ class MyLoginView(LoginView):
         return self.render_to_response(self.get_context_data(form=form))
 
 
-def index(request):
-    return render(request, 'index.html')
-
 
 def check_file(request):
     if request.method == 'POST':
@@ -108,5 +105,7 @@ def data_dump(request):
     content = list(fatos.values())
     return render(request, 'data_dump.html', {'content': content})
 
-def home_page(request):
-    return render(request, 'index.html')
+def index(request):
+    fatos = Sources.objects.all()
+    content = list(fatos.values())
+    return render(request, 'index.html', {'content': content})

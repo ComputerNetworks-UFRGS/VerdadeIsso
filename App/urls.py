@@ -7,6 +7,6 @@ urlpatterns = [
     path('upload/', views.upload_file, name='upload_file'),
     path('upload/success/', views.upload_file, name='upload_file_success'),
     path('data/', views.data_dump, name='data_dump'),
-    path('', views.home_page, name='home_page'),
+    path('', views.index, name='index'),
     path('login/', MyLoginView.as_view(template_name='App/templates/login/login.html'),name='login'),
 ]

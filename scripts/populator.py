@@ -89,9 +89,9 @@ fonte, _ = Sources.objects.get_or_create(id=98)
 textosfake.Fontes.add(fonte)
 textosfake.save()
 
-with open('video.mp4', 'rb') as file:
-   arquivosfake = UploadedFile.objects.create(arquivo="video.mp4")
-   arquivosfake.save()
-fonte, _ = Sources.objects.get_or_create(id=66) # Add id of the fakenews source
-arquivosfake.Fontes.add(fonte)
-arquivosfake.save()
+#with open('video.mp4', 'rb') as file:
+#   arquivosfake = UploadedFile.objects.create(arquivo="video.mp4")
+#   arquivosfake.save()
+#fonte, _ = Sources.objects.get_or_create(id=66) # Add id of the fakenews source
+#arquivosfake.Fontes.add(fonte)
+#arquivosfake.save()

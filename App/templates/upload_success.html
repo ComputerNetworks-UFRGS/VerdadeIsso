@@ -1,15 +1,31 @@
-<!DOCTYPE html>
+{% extends "App/templates/base.html" %}
+{% load static %}
+
 <html>
-<head>
-    <title>Upload Success</title>
-</head>
-<body>
-    <h2>Upload Success</h2>
-    <p>Your file has been successfully uploaded.</p>
-    <hr>
-    <h3>File Content:</h3>
-    <pre>{{ content }}</pre>
-    <h3>File Hash:</h3>
-    <p>{{ file_hash }}</p>
-</body>
+
+    <!-- Plugins js -->
+        <script src={% static "assets/libs/dropzone/min/dropzone.min.js" %}></script>
+        <script src={% static "assets/libs/dropify/js/dropify.min.js" %}></script>
+
+        <!-- Init js-->
+        <script src={% static "assets/js/pages/form-fileuploads.init.js" %}></script>
+        
+{% block page_content %}
+
+<h3>Conteúdo adicionado com sucesso na base de dados.</h3>
+<p><strong>Assinatura do Conteúdo (SHA-256): {{ file_hash }} </strong></p>
+  <div>     					
+  <button onclick="add()">Adicionar Novo Conteúdo</button>
+</div>
+    <script>
+        function add() {
+            window.location.href = "/upload/";
+        }
+    </script>       
+       						
+{% endblock %}
+
+
+        
+    </body>
 </html>

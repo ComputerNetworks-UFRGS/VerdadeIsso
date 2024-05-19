@@ -7,6 +7,9 @@ class Sources(models.Model):
     web_source = models.CharField(max_length=64, blank=True)
     added_at = models.DateTimeField(auto_now_add=True)
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        
     def __str__(self):
        return self.title
            

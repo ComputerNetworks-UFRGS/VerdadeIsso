@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UploadFileForm, UploadTextForm, CheckFileForm, CheckTextForm
+from .forms import UploadFileForm, UploadTextForm, CheckFileForm, CheckTextForm, addSourceForm
 import hashlib
 from .models import UploadedFile, UploadedText, CheckedFile, Sources
 from django.http import JsonResponse
@@ -99,6 +99,20 @@ def upload_file(request):
         form = UploadFileForm() # Form is to upload files
         form2 = UploadTextForm() # Form2 is to upload text
     return render(request, 'upload.html', {'form': form, 'form2': form2})
+
+@login_required
+def add_source(request):
+   print(request.method)
+   if request.method == 'POST':
+      form = addSourceForm(request.POST)
+      if form.is_valid():
+         addSource = form.save()
+         uploadfile = UploadFileForm()
+         uploadtext = UploadTextForm()
+         return render(request, 'upload.html', {'form': uploadfile, 'form2': uploadtext}) # Send the updated forms to load the /upload/ again
+   else:
+      form = addSourceForm()
+      return render(request, 'add_source.html', {'form': form})
     
 def data_dump(request):
     fatos = Sources.objects.all()

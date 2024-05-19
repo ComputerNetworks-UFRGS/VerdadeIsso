@@ -29,3 +29,11 @@ class CheckTextForm(forms.ModelForm):
     class Meta:
         model = CheckedText
         fields = ['texto']
+
+class addSourceForm(forms.ModelForm):
+    title = models.CharField(max_length=100, blank=True)
+    link = models.CharField(max_length=64, blank=True)
+    web_source = models.CharField(max_length=64, blank=True)
+    class Meta:
+        model = Sources
+        fields = ['title', 'link', 'web_source']

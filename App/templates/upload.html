@@ -69,6 +69,18 @@ Adicionaremos em nossa base dados o texto como fonte de desinformação e as pro
                         </div>
                         </div>
                         <!-- end row -->  
+                        
+<button id="openModalBtn">Adicionar Nova Fonte</button>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="closeModalBtn" class="close">&times;</span>
+        <div id="modalBody">
+            
+        </div>
+    </div>
+</div>
+<script src={% static "assets/modal.js" %}></script>
  
  <script>
         // Adiciona um evento de escuta para detectar mudanças na seleção

@@ -47,7 +47,7 @@ def check_file(request):
                uploaded_file = form.save() # Salva como checked file, mas não como fakenews
                # Aqui a gente implementa algo em caso de hash não existir.
                return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})
-        if form2.is_valid():
+        if form2.is_valid(): # If text
            uploaded_text = form2.cleaned_data
            content = uploaded_text['texto']
            text_hash = hashlib.sha256(content.encode()).hexdigest()
@@ -73,7 +73,7 @@ def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         form2 = UploadTextForm(request.POST)
-        if form.is_valid():
+        if form.is_valid(): # If file
             uploaded_file = form.cleaned_data
             # Read the content of the uploaded file
             content = uploaded_file['arquivo'].read()
@@ -81,17 +81,23 @@ def upload_file(request):
             file_hash = hashlib.sha256(content).hexdigest()
             exists = UploadedFile.objects.filter(hash_value=file_hash).exists()
             if exists:
+               fakenews = UploadedFile.objects.get(hash_value=file_hash)
+               fakenews_sources = fakenews.Fontes.all()
+               content = list(fakenews_sources.values()) 
                return render(request, 'existe.html', {'content': content, 'file_hash': file_hash})
             else:
                uploaded_file = form.save()
                return render(request, 'upload_success.html', {'content': content, 'file_hash': file_hash})
-        if form2.is_valid():
+        if form2.is_valid(): # If text
             content = form2.cleaned_data
             texto = content['texto']
             text_hash = hashlib.sha256(texto.encode()).hexdigest()
             exists = UploadedText.objects.filter(hash_value=text_hash).exists()
             if exists:
-               return render(request, 'existe.html', {'content': content, 'file_hash': text_hash})
+              fakenews = UploadedText.objects.get(hash_value=text_hash)
+              fakenews_sources = fakenews.Fontes.all()
+              content = list(fakenews_sources.values())
+              return render(request, 'existe.html', {'content': content, 'file_hash': text_hash})
             else:
                content = form2.save()
                return render(request, 'upload_success.html', {'content': texto, 'file_hash': text_hash})

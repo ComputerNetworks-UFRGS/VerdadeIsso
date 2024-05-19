@@ -9,7 +9,7 @@
         <meta content="AgregadorFatos" name="UFRGS" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href={% static "assets/lupa.png" %}>
 
         <!-- Plugins css -->
         <link href={% static "assets/libs/dropzone/min/dropzone.min.css" %} rel="stylesheet" type="text/css" />
@@ -58,7 +58,8 @@
                         <div class="topbar-menu d-flex align-items-right gap-1">
                             <div class="d-none d-xl-block">
                                 <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <span><b>É Verdade Isso?</b></span>
+                                    <span> <img src={% static "assets/logo-nome.png" %} alt="É Verdade Isso?"> Plataforma para Identificação de Informações Falsas Utilizando Assinaturas de Conteúdo e Inteligência Artificial.
+ </span>
                                 </a>
                             </div>
                         </div>
@@ -71,28 +72,26 @@
                             </div>
                             <div class="d-none d-xl-block">
                                 <a class="nav-link waves-effect waves-light" href="/check/" role="button" aria-haspopup="false" aria-expanded="false">
-                                   <span>Checar</span>
+                                   <span>Checar Conteúdo</span>
                                 </a>
                             </div>
 
                             <div class="d-none d-xl-block">
                                 <a class="nav-link waves-effect waves-light" href="/data/" role="button" aria-haspopup="false" aria-expanded="false">
-                                   <span>Estatísticas</span>
+                                   <span>Dados</span>
                                 </a>
                             </div>
-
+                            
+              <div class="d-none d-xl-block">
+                                <a class="nav-link waves-effect waves-light" href="/upload/" role="button" aria-haspopup="false" aria-expanded="false">
+                                   <span>Enviar Conteúdo</span>
+                                </a>
+                            </div>
                             <div class="d-none d-xl-block">
                                 <a class="nav-link waves-effect waves-light" href="/about/" role="button" aria-haspopup="false" aria-expanded="false">
                                    <span>Sobre</span>
                                 </a>
                             </div>
-
-                            <div class="d-none d-xl-block">
-                                <a class="nav-link waves-effect waves-light" href="/contact/" role="button" aria-haspopup="false" aria-expanded="false">
-                                 <span>Contato</span>
-                                </a>
-                            </div>
-
                             
                             <div class="d-none d-xl-block">
                                 <a class="nav-link waves-effect waves-light" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -122,12 +121,12 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <div><script>document.write(new Date().getFullYear())</script> © É Verdade Isso? - <a href="http://hackathon.sbc.org.br/hsclima/">Hacktoon da Solidariedade Climática (HSCLIMA)</a></div>
+                                <div><script>document.write(new Date().getFullYear())</script> © É Verdade Isso? - <a href="http://hackathon.sbc.org.br/hsclima/">Hacktoon da Solidariedade Climática (HSCLIMA)</a> - Universidade Federal do Rio Grande do Sul (UFRGS)</div>
                             </div>
                             <div class="col-md-6">
                                 <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end footer-links">
-                                    <a href="javascript: void(0);">Sobre</a>
-                                    <a href="javascript: void(0);">Github</a>
+                                    <a href="mailto:mffranco@inf.ufrgs.br,ejscheid@inf.ufrgs.br,avcamargo@inf.ufrgs.br">Contato</a>
+                                    <a href="https://github.com/ComputerNetworks-UFRGS/VerdadeIsso">Github</a>
                                 </div>
                             </div>
                         </div>

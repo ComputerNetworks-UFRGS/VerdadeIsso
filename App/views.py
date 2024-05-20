@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import UploadFileForm, UploadTextForm, CheckFileForm, CheckTextForm, addSourceForm
 import hashlib
-from .models import UploadedFile, UploadedText, CheckedFile, Sources
+from .models import UploadedFile, UploadedText, CheckedText, CheckedFile, Sources
 from django.http import JsonResponse
 from accounts.models import User
 from accounts.forms import UserCreationForm, Autenticacao
@@ -154,4 +154,17 @@ def contact(request):
 def index(request):
     fatos = Sources.objects.all()
     content = list(fatos.values())
-    return render(request, 'index.html', {'content': content})
+    totalFatos = len(content)
+
+    totalCheckedFiles = CheckedFile.objects.all().count()
+    totalCheckedText = CheckedText.objects.all().count()
+    totalChecked = totalCheckedFiles + totalCheckedText    
+
+    totalFakeFiles = CheckedFile.objects.all().filter(fake='True').count()
+    totalFakeText = CheckedText.objects.all().filter(fake='True').count()
+    totalFake = totalFakeFiles + totalFakeText
+
+    totalMapeamentos = UploadedFile.objects.values('Fontes').count()
+    totalMapeamentos += UploadedText.objects.values('Fontes').count()
+   
+    return render(request, 'index.html', {'content': content[:5], 'totalFake': totalFake, 'totalFontes': totalFatos, 'totalChecked': totalChecked, 'totalMapeamentos': totalMapeamentos})

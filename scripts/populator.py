@@ -89,9 +89,15 @@ fonte, _ = Sources.objects.get_or_create(id=98)
 textosfake.Fontes.add(fonte)
 textosfake.save()
 
-with open('video.mp4', 'rb') as file:
-   arquivosfake = UploadedFile.objects.create(arquivo="video.mp4")
-   arquivosfake.save()
-fonte, _ = Sources.objects.get_or_create(id=66) # Add id of the fakenews source
-arquivosfake.Fontes.add(fonte)
-arquivosfake.save()
+noticias = ["*Pegaram o Pablo Marçal* Vamos acelerar para reconquistar a Nação. Ele é multimilionário, super inteligente e está declarando guerra contra o Sistema. Vamos divulgar em massa!! Precisamos lutar pela nossa liberdade! Por favor NÃO SE OMITA!!! COMPARTILHE!!!!", "*Pegaram o Pablo Marçal* PF fez busca e apreensão na residência do PM após declaração sobre ineficiência do governo em ajudar RGS COMPARTILHE!!!"]
+textosfake.save()
+fonte, _ = Sources.objects.get_or_create(id=108)
+textosfake.Fontes.add(fonte)
+textosfake.save()
+
+#with open('video.mp4', 'rb') as file:
+#   arquivosfake = UploadedFile.objects.create(arquivo="video.mp4")
+#   arquivosfake.save()
+#fonte, _ = Sources.objects.get_or_create(id=66) # Add id of the fakenews source
+#arquivosfake.Fontes.add(fonte)
+#arquivosfake.save()

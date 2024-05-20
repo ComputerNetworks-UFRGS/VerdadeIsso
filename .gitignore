@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# do not upload DB
+db.sqlite3
+
 # C extensions
 *.so
 

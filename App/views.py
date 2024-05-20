@@ -136,6 +136,24 @@ def data_dump(request):
     content = list(fatos.values())
     fake = UploadedText.objects.all() # Return all fakenews already uploaded
     fake_text = list(fake.values())
+
+   #init contagem de exemplos
+    fontes = []
+    fake_text = list(UploadedText.objects.values('Fontes'))	 # Get all texts uploaded and its sources association
+    for fato in content:
+        count=0
+        for fake in fake_text:
+            if fake['Fontes'] == fato['id']:
+                count+=1 
+        fontes.append(count)
+    content2=[]
+    i=0
+    for item in content:
+        item.update({'countExemplos':fontes[i]})
+        i+=1
+    # end contagem exemplos
+
+
     return render(request, 'data_dump.html', {'content': content, 'fake': fake_text})
 
 def fake_samples(request, value_id):
@@ -156,6 +174,22 @@ def index(request):
     content = list(fatos.values())
     totalFatos = len(content)
 
+   #init contagem de exemplos
+    fontes = []
+    fake_text = list(UploadedText.objects.values('Fontes'))	 # Get all texts uploaded and its sources association
+    for fato in content:
+        count=0
+        for fake in fake_text:
+            if fake['Fontes'] == fato['id']:
+                count+=1 
+        fontes.append(count)
+    content2=[]
+    i=0
+    for item in content:
+        item.update({'countExemplos':fontes[i]})
+        i+=1
+    # end contagem exemplos
+
     totalCheckedFiles = CheckedFile.objects.all().count()
     totalCheckedText = CheckedText.objects.all().count()
     totalChecked = totalCheckedFiles + totalCheckedText    
@@ -167,4 +201,4 @@ def index(request):
     totalMapeamentos = UploadedFile.objects.values('Fontes').count()
     totalMapeamentos += UploadedText.objects.values('Fontes').count()
    
-    return render(request, 'index.html', {'content': content[:5], 'totalFake': totalFake, 'totalFontes': totalFatos, 'totalChecked': totalChecked, 'totalMapeamentos': totalMapeamentos})
+    return render(request, 'index.html', {'fake_text':fontes, 'content': content[:5], 'totalFake': totalFake, 'totalFontes': totalFatos, 'totalChecked': totalChecked, 'totalMapeamentos': totalMapeamentos})

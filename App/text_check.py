@@ -5,7 +5,7 @@ from .models import UploadedText
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
-def get_similar_text(query_text, threshold=0.8):
+def get_similar_text(query_text, threshold=0.5):
     # Fetch all documents
     all_documents = UploadedText.objects.all()
 

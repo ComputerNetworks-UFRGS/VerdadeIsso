@@ -11,6 +11,9 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
+from .text_check import get_similar_text
+from itertools import chain
+
 
 class MyLoginView(LoginView):
     redirect_authenticated_user = True
@@ -36,33 +39,41 @@ def check_file(request):
             file_hash = hashlib.sha256(content).hexdigest()
             exists = UploadedFile.objects.filter(hash_value=file_hash).exists()
             if exists:
-               uploaded_file = form.save(commit=False) 
-               uploaded_file.fake = True # Fakenews flag
-               uploaded_file.save()
-               fakenews = UploadedFile.objects.get(hash_value=file_hash)
-               fakenews_sources = fakenews.Fontes.all()
-               content = list(fakenews_sources.values()) 
-               return render(request, 'fake.html', {'content': content, 'file_hash': file_hash})
+                uploaded_file = form.save(commit=False) 
+                uploaded_file.fake = True # Fakenews flag
+                uploaded_file.save()
+                fakenews = UploadedFile.objects.get(hash_value=file_hash)
+                fakenews_sources = fakenews.Fontes.all()
+                content = list(fakenews_sources.values())
+                return render(request, 'fake.html', {'content': content, 'file_hash': file_hash})
             else: # Aqui implementamos algo em caso da hash não existir
-               uploaded_file = form.save() # Salva como checked file, mas não como fakenews
-               # Aqui a gente implementa algo em caso de hash não existir.
-               return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})
+                uploaded_file = form.save() # Salva como checked file, mas não como fakenews
+                # Aqui a gente implementa algo em caso de hash não existir.
+                return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})
         if form2.is_valid(): # If text
-           uploaded_text = form2.cleaned_data
-           content = uploaded_text['texto']
-           text_hash = hashlib.sha256(content.encode()).hexdigest()
-           exists = UploadedText.objects.filter(hash_value=text_hash).exists()
-           if exists:
-              content = form2.save(commit=False)
-              content.fake = True
-              content.save()
-              fakenews = UploadedText.objects.get(hash_value=text_hash)
-              fakenews_sources = fakenews.Fontes.all()
-              content = list(fakenews_sources.values())
-              return render(request, 'fake.html', {'content': content, 'file_hash': text_hash})
-           else:
-              uploaded_text = form2.save()
-              return render(request, 'sem-hash.html', {'content': content, 'file_hash': text_hash})
+            uploaded_text = form2.cleaned_data
+            content = uploaded_text['texto']
+            text_hash = hashlib.sha256(content.encode()).hexdigest()
+            exists = UploadedText.objects.filter(hash_value=text_hash).exists()
+            if exists:
+                content = form2.save(commit=False)
+                content.fake = True
+                content.save()
+                fakenews = UploadedText.objects.get(hash_value=text_hash)
+                fakenews_sources = fakenews.Fontes.all()
+                content = list(fakenews_sources.values())
+                print(content)
+                return render(request, 'fake.html', {'content': content, 'file_hash': text_hash})
+            else:
+                docs = get_similar_text(content)
+                if docs:
+                    unique_content = set(tuple(d.items()) for d in chain.from_iterable(d.Fontes.all().values() for d in docs))
+                    content = [dict(item) for item in unique_content]
+                    print(content)
+                    return render(request, 'similar.html', {'content': content})
+                else:
+                    uploaded_text = form2.save()
+                    return render(request, 'sem-hash.html', {'content': content, 'file_hash': text_hash})
     else:
         form = CheckFileForm()
         form2 = CheckTextForm()

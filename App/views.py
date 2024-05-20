@@ -12,6 +12,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .text_check import get_similar_text
+from .image_check import check_image_api
 from itertools import chain
 
 
@@ -46,10 +47,12 @@ def check_file(request):
                 fakenews_sources = fakenews.Fontes.all()
                 content = list(fakenews_sources.values())
                 return render(request, 'fake.html', {'content': content, 'file_hash': file_hash})
-            else: # Aqui implementamos algo em caso da hash não existir
-                uploaded_file = form.save() # Salva como checked file, mas não como fakenews
-                # Aqui a gente implementa algo em caso de hash não existir.
-                return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})
+            else:
+                output = check_image_api(content)
+                if output['ai_generated'] > 0.5:
+                    return render(request, 'ai-generated.html', {'content': float(output['ai_generated']) * 100})
+                else:
+                    return render(request, 'sem-hash.html', {'content': content, 'file_hash': file_hash})
         if form2.is_valid(): # If text
             uploaded_text = form2.cleaned_data
             content = uploaded_text['texto']

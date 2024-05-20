@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FAKE</title>
+</head>
+
+{% extends "App/templates/base.html" %}
+{% load static %}
+
+    <head>
+       
+       <!-- third party css -->
+        <link href="{% static 'assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+       <!-- Theme Config Js -->
+		<script src={% static "assets/js/head.js" %}></script>
+
+		<!-- Bootstrap css -->
+		<link href={% static "assets/css/bootstrap.min.css" %} rel="stylesheet" type="text/css" id="app-style" />
+
+		<!-- App css -->
+		<link href={% static "assets/css/app.min.css" %} rel="stylesheet" type="text/css" />
+
+		<!-- Icons css -->
+		<link href={% static "assets/css/icons.min.css" %} rel="stylesheet" type="text/css" />
+        <!-- third party css end -->
+    </head>
+    
+{% block page_content %}
+        <!-- Begin page -->
+        <div id="wrapper">                   
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                <h4 class="page-title">Resultado da Análise</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+
+
+                        <h1>Desinformação!</h1>
+                        <h3 class="font-16 mb-4">
+                          O conteúdo analisado foi gerado por uma AI e temos <span class='text-danger'> <strong>{{ content }}% </strong></span> de certeza disso.
+                        </h3>
+    {% endblock %}
+</html>

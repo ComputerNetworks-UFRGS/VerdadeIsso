@@ -44,7 +44,7 @@
                                         <td><a href="{{ item.link }}" target="_blank">{{ item.link }}</a></td>
                                         <td>{{ item.web_source }}</td>
                                         <td>{{ item.added_at|date:"d/m/Y" }}</td>
-                                        <td><a href="/data/{{ item.id }}">Exemplos</a></td>
+                                        <td><a href="/data/{{ item.id }}">{{item.countExemplos}}</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

@@ -42,7 +42,7 @@
                                             <div class="col-6">
                                                 <div class="text-end">
                                                     <h3 class="text-dark mt-1"><span data-plugin="counterup">{{totalFake}}</span></h3>
-                                                    <p class="text-muted mb-12 text">Desinformações Identificadas</p>
+                                                    <p class="text-muted mb-1 text">Desinformações Identificadas</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
@@ -120,13 +120,12 @@
                                         <td><a href="{{ item.link }}" target="_blank">{{ item.link }}</a></td>
                                                     <td>{{ item.web_source }}</td>
                                                     <td>{{ item.added_at|date:"d/m/Y" }}</td>
-						    <td><a href="/data/{{item.id}}">Exemplos</a></td>
+						    <td><a href="/data/{{item.id}}">{{item.countExemplos}}</a></td>
                                                 </tr>
 												{% endfor %}
                                             </tbody>
 					</table>
                                                                         <a href="/data"/>Ver mais</a>
-
                                     </div> <!-- end card body-->
 				</div> <!-- end card -->
                             </div><!-- end col-->

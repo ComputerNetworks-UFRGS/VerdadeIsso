@@ -4,9 +4,11 @@
 
 **Desenvolvedores:** Muriel Figueredo Franco, Eder John Scheid, Arthur Camargo  
 **E-mail:** [mffranco, ejscheid, avcamargo]@inf.ufrgs.br  
-Universidade Federal do Rio Grande do Sul (UFRGS) - Instituto de Informática (INF) - Grupo de Redes
+**Instituição:** Universidade Federal do Rio Grande do Sul (UFRGS) - Instituto de Informática (INF) - Grupo de Redes
 
-Plataforma desenvolvida durante a Hacktoon HSClima 2024, que aconteceu durante as enchentes ocasionadas pelas chuvas, que assolaram o Rio Grande do Sul no início de Maio de 2024.
+## Sobre o Projeto
+
+"É Verdade Isso?" é uma plataforma desenvolvida durante a [Hackathon da Solidariedade Climática (HSClima) 2024](http://hackathon.sbc.org.br/hsclima/index.html), organizada pela [Sociedade Brasileira de Computação (SBC)](https://sbc.org.br). A hackathon foi um evento que ocorreu em resposta às enchentes devastadoras causadas pelas chuvas no Rio Grande do Sul (RS) no início de maio de 2024, onde as inscrições foram revertidas em doações.
 
 ## Resumo
 
@@ -16,7 +18,7 @@ A plataforma permite que usuários façam o envio de arquivos de mídia e també
 
 Além disso, em caso de assinaturas não existentes na base de dados, a plataforma aplica técnicas de Inteligência Artificial (IA) para verificar potenciais alterações na informação e também elementos que possam indicar desinformação (por exemplo, análise de sentimentos em textos e também verificação do uso de IA generativa para geração do conteúdo verificado).
 
-Por fim, a plataforma "É Verdade Isso?" também serve como um agregador das principais que desmentem informações falsas, facilitando assim o acesso aos usuários e também provendo uma análise das tendências de disseminação de noticias falsas durante desastres e eventos de grande repercussão.
+Por fim, a plataforma "É Verdade Isso?" também serve como um agregador das principais fontes que desmentem informações falsas, facilitando assim o acesso aos usuários e também provendo uma análise das tendências de disseminação de noticias falsas durante desastres e eventos de grande repercussão.
 
 ## Como Entrar em Contato
 

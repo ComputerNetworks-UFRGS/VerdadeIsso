@@ -20,10 +20,6 @@ Além disso, em caso de assinaturas não existentes na base de dados, a platafor
 
 Por fim, a plataforma "É Verdade Isso?" também serve como um agregador das principais fontes que desmentem informações falsas, facilitando assim o acesso aos usuários e também provendo uma análise das tendências de disseminação de noticias falsas durante desastres e eventos de grande repercussão.
 
-## Demonstração em Vídeo
-
-[![Assista ao vídeo](path/to/video-thumbnail.png)](https://www.youtube.com/watch?v=VIDEO_ID)
-
 ## Como Entrar em Contato
 
 Para mais informações, dúvidas ou sugestões, entre em contato conosco através dos e-mails dos desenvolvedores:
